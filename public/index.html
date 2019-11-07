@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Gender Calculator</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="app">
+
+         <h1>Whats Your Name?</h1>
+          <form v-on:submit.prevent="determineGender">
+            <input type="text" v-model="name" placeholder="Enter a Name">
+            <input type="submit" value="Calculate Gender">
+          </form>
+          <br>
+          
+          <div v-if="defined">
+            There are {{count}} {{savedName}}'s in {{savedCountry}} and ~{{probability}}% of them are {{gender}}
+          </div>
+          <div v-else>
+            <p>There is no data on that name in that country</p>
+          </div>
+
+          <h1>Refine by Country</h1>
+          <form v-on:keyup.prevent="fetchREST" v-on:submit.prevent="determineGender">
+            <input type="text" v-model="prefix" placeholder="Start Typing a Country">
+          </form>
+          <p>Refining by: {{country.name}}</p>
+          <ul>
+            <li v-for="item in countries">
+              {{ item.name }} ({{item.code}})
+            </li>
+          </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="javascripts/script.js"></script>
+</body>
+
+<footer class='footer'>
+    <span>Find this project on </span>
+    <a href='https://github.com/hooperxander/CS260_Creative4'>GitHub</a>
+    <span>.</span>
+  </footer>
+
+</html>
