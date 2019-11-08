@@ -27,6 +27,7 @@
           </div>
 
           <h1>Refine by Country</h1>
+          <p>Note: you dont have to type the whole name</p>
           <form v-on:keyup.prevent="fetchREST" v-on:submit.prevent="determineGender">
             <input type="text" v-model="prefix" placeholder="Start Typing a Country">
           </form>
